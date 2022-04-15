@@ -1,6 +1,7 @@
 package guru.springframework.sfgdi;
 
 import guru.springframework.sfgdi.controllers.ConstructorInjectedController;
+import guru.springframework.sfgdi.controllers.I18nController;
 import guru.springframework.sfgdi.controllers.MyController;
 import guru.springframework.sfgdi.controllers.PropertyInjectedController;
 import guru.springframework.sfgdi.controllers.SetterInjectedController;
@@ -14,10 +15,13 @@ public class SfgDiApplication {
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(SfgDiApplication.class, args);
 
+		I18nController i18nController = (I18nController) ctx.getBean("i18nController");
+		System.out.println(i18nController.sayHello());
+
+
 		MyController myController = (MyController) ctx.getBean("myController");
 		System.out.println("------ Primary Bean");
 		System.out.println(myController.sayHello());
-
 
 		System.out.println("------ Property");
 		PropertyInjectedController propertyInjectedController = (PropertyInjectedController) ctx.getBean("propertyInjectedController");
